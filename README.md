@@ -5,7 +5,7 @@
 
 [Connect ClearML SDK to the Server](https://clear.ml/docs/latest/docs/getting_started/ds/ds_first_steps#connect-clearml-sdk-to-the-server)
 
-New configuration stored in /home/<username>/clearml.conf
+New configuration stored in `/home/<username>/clearml.conf`
 
 
 ## Start DolphinScheduler 
