@@ -22,6 +22,12 @@ docker build -f Dockerfile -t dolphinscheduler-standalone-server:3.1.1-clearml .
 # please set the actual value "/home/<username>/clearml.conf" in the following command
 docker run --name dolphinscheduler-standalone-server -v /home/<username>/clearml.conf:/root/clearml.conf -p 12345:12345 -p 25333:25333 -d dolphinscheduler-standalone-server:3.1.1-clearml
 ```
+You also can use the exist docker image jalonzjg/dolphinscheduler-standalone-server:3.1.1-clearml in docker hub.
+
+```shell
+# please set the actual value "/home/<username>/clearml.conf" in the following command
+docker run --name dolphinscheduler-standalone-server -v /home/<username>/clearml.conf:/root/clearml.conf -p 12345:12345 -p 25333:25333 -d jalonzjg/dolphinscheduler-standalone-server:3.1.1-clearml
+```
 
 And then, you can log in to the DolphinScheduler at http://localhost:12345/dolphinscheduler/ui
 
