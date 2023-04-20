@@ -2,6 +2,7 @@ try:
     import joblib
 except ImportError:
     from sklearn.externals import joblib
+import os
 
 from sklearn.linear_model import LogisticRegression
 import numpy as np
@@ -9,6 +10,7 @@ import matplotlib.pyplot as plt
 
 from clearml import Task
 import pickle
+import random
 
 training_task_project = "training"  # $PARAM:
 training_task_name = "test"  # $PARAM:
@@ -19,6 +21,10 @@ task = Task.init(project_name=training_task_project,
                  task_name=training_task_name)
 
 train_data_path = "/tmp/clearml_test/training/iris_dataset.pkl"
+
+model_dir = f"/tmp/clearml_test/{training_task_project}/{training_task_name}/{task.id}"
+os.makedirs(model_dir, exist_ok=True)
+model_path = os.path.join(model_dir, "model.pkl")
 
 datas = pickle.load(open(train_data_path, 'rb'))
 
@@ -35,9 +41,9 @@ y_test = datas["y_test"]
 model = LogisticRegression(solver='liblinear', multi_class='auto')
 model.fit(X_train, y_train)
 
-joblib.dump(model, 'model.pkl', compress=True)
+joblib.dump(model, model_path, compress=True)
 
-loaded_model = joblib.load('model.pkl')
+loaded_model = joblib.load(model_path)
 result = loaded_model.score(X_test, y_test)
 x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
 y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
@@ -55,6 +61,3 @@ plt.xticks(())
 plt.yticks(())
 
 plt.show()
-
-
-task.upload_artifact('model.pkl', artifact_object='model.pkl')

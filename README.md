@@ -10,18 +10,18 @@ New configuration stored in `/home/<username>/clearml.conf`
 
 ## Start DolphinScheduler 
 
-### Build Docker image
-
-```shell
-docker build -f Dockerfile -t dolphinscheduler-standalone-server:3.1.1-clearml .
-```
-
-### Start DolphinScheduler 
-
-```shell
-# please set the actual value "/home/<username>/clearml.conf" in the following command
-docker run --name dolphinscheduler-standalone-server -v /home/<username>/clearml.conf:/root/clearml.conf -p 12345:12345 -p 25333:25333 -d dolphinscheduler-standalone-server:3.1.1-clearml
-```
+<!-- ### Build Docker image -->
+<!---->
+<!-- ```shell -->
+<!-- docker build -f Dockerfile -t dolphinscheduler-standalone-server:3.1.1-clearml . -->
+<!-- ``` -->
+<!---->
+<!-- ### Start DolphinScheduler  -->
+<!---->
+<!-- ```shell -->
+<!-- # please set the actual value "/home/<username>/clearml.conf" in the following command -->
+<!-- docker run --name dolphinscheduler-standalone-server -v /home/<username>/clearml.conf:/root/clearml.conf -p 12345:12345 -p 25333:25333 -d dolphinscheduler-standalone-server:3.1.1-clearml -->
+<!-- ``` -->
 
 And then, you can log in to the DolphinScheduler at http://localhost:12345/dolphinscheduler/ui
 
@@ -34,7 +34,7 @@ password: `dolphinscheduler123`
 
 ```shell
 # install the pydolphinscheduler to submit workflow using python script
-python3 -m pip install apache-dolphinscheduler==3.1.1
+python3 -m pip install apache-dolphinscheduler==4.0.3
 ```
 
 ```shell
